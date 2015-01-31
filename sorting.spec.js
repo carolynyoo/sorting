@@ -9,9 +9,6 @@ describe('Bubble Sort', function () {
 
   it('sorts an array properly', function () {
     expect(bubbleSort([5,3,20])).toEqual([3,5,20]);
-  });
-
-  it('sorts an array properly', function () {
     expect(bubbleSort([32, 5, 8, 1, 16, 7])).toEqual([1, 5, 7, 8, 16, 32]);
   });
 })
@@ -19,10 +16,7 @@ describe('Bubble Sort', function () {
 describe('Merge', function () {
   it('is able to merge two sorted arrays', function () {
     expect(merge([5, 20], [6, 10])).toEqual([5, 6, 10, 20]);
-  })
-
-  it('is able to merge two sorted arrays', function () {
-    expect(merge([5, 20, 30, 40, 100], [6, 7, 8, 10])).toEqual([5, 6, 7, 8, 10, 20, 30, 40, 100]);
+    expect(merge([5, 20, 30, 40, 100], [5, 7, 8, 10])).toEqual([5, 5, 7, 8, 10, 20, 30, 40, 100]);
   })
 
   it('is able to merge one element arrays', function () {
@@ -47,9 +41,6 @@ describe('Merge Sort', function () {
 
   it('sorts longer arrays', function () {
     expect(mergeSort([32, 5, 8, 1])).toEqual([1, 5, 8, 32]);
-  })
-
-  it('sorts longer arrays', function () {
-    expect(mergeSort([32, 1, 7])).toEqual([1, 7, 32]);
+    expect(mergeSort([32, 1, 7, 100, 500])).toEqual([1, 7, 32, 100, 500]);
   })
 })

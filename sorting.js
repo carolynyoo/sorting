@@ -1,12 +1,10 @@
 function bubbleSort (arr) {
 
-  var swaps = arr.length;
-  var comparisons=0;
+  var swaps;
 
-  while (swaps > 0) {
+  while (swaps != 0) {
     swaps = 0;
     for (var i=0; i<arr.length-1; i++) {
-      comparisons++;
       var first = arr[i];
       var second = arr[i+1];
       if (second < first) {
@@ -26,15 +24,16 @@ function merge (left, right) {
 
   while (left.length > 0 || right.length > 0) {
     if (left.length === 0 && right.length > 0) {
-      resultArr.push(right.shift());
+      return resultArr.concat(right);
     } else if (left.length > 0 && right.length === 0) {
-      resultArr.push(left.shift());
-    } else if (left[0] <= right[0]) {
-      resultArr.push(left.shift());
-    } else {
-      resultArr.push(right.shift());
+      return resultArr.concat(left);
+    } else { 
+      if (left[0] <= right[0]) {
+        resultArr.push(left.shift());
+      } else {
+        resultArr.push(right.shift());
+      }
     }
-    console.log(resultArr);
   }
 
   return resultArr;
@@ -42,15 +41,23 @@ function merge (left, right) {
 
 function split (arr) {
   var returnArr=[];
+  if (arr.length === 1) {
+    return [[], arr];
+  }
   var arrLength = Math.floor(arr.length/2);
-  // left
-  var left = arr.slice(0, arrLength);
-  returnArr.push(left);
-  // right
-  var right = arr.slice(arrLength);
-  returnArr.push(right);
 
-  return returnArr;
+  // with slice
+  // var left = arr.slice(0, arrLength);
+  // returnArr.push(left);
+
+  // var right = arr.slice(arrLength);
+  // returnArr.push(right);
+  // return returnArr;
+
+  // alternative
+  var right=arr.splice(arrLength);
+  return [arr, right];
+
 }
 
 function mergeSort (arr) {
@@ -61,7 +68,7 @@ function mergeSort (arr) {
   var splitArr = split(arr);
   var left = splitArr[0];
   var right = splitArr[1];
-  
+
   left = mergeSort(left);
   right = mergeSort(right);
 
